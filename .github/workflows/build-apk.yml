@@ -6,33 +6,45 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04   # IMPORTANT: NOT ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
+
     - name: Checkout source
       uses: actions/checkout@v4
 
-    - name: Set up Python 3.10
+    - name: Setup Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: 3.10
 
-    - name: Install dependencies
+    - name: Install system dependencies
       run: |
         sudo apt update
-        sudo apt install -y build-essential git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev
-        pip install buildozer cython
+        sudo apt install -y \
+          build-essential \
+          libffi-dev \
+          libssl-dev \
+          libsqlite3-dev \
+          zlib1g-dev \
+          openjdk-11-jdk \
+          autoconf \
+          libtool \
+          pkg-config
 
-    - name: Accept licenses
+    - name: Install Python dependencies
       run: |
-        yes | buildozer android update
+        python -m pip install --upgrade pip
+        pip install Cython==0.29.36
+        pip install buildozer==1.5.0
 
     - name: Build APK
       run: |
-        yes | buildozer android debug
+        buildozer android debug
 
-    - name: Upload APK
+    - name: Upload APK artifact
       uses: actions/upload-artifact@v4
       with:
         name: palacharak-apk
         path: bin/*.apk
+
