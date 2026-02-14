@@ -4,20 +4,24 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout source
+    - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Build APK
+    - name: Build with Buildozer
       uses: ArtemSBulgakov/buildozer-action@v1
       with:
+        buildozer_version: stable
         command: buildozer android debug
 
-    - name: Upload APK
+    - name: Upload APK artifact
       uses: actions/upload-artifact@v4
       with:
         name: palacharak-apk
