@@ -1,20 +1,45 @@
-- name: Setup Python
-  uses: actions/setup-python@v5
-  with:
-    python-version: '3.10'
+name: Build APK
 
-- name: Install dependencies
-  run: |
-    pip install --upgrade pip
-    pip install buildozer cython
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
-- name: Install Android SDK tools
-  run: |
-    sudo apt update
-    sudo apt install -y zip unzip openjdk-11-jdk
+jobs:
+  build:
+    runs-on: ubuntu-22.04
 
-- name: Accept Android licenses
-  run: yes | sdkmanager --licenses || true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-- name: Build APK
-  run: buildozer android debug
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            zip unzip openjdk-11-jdk \
+            python3-pip autoconf libtool pkg-config \
+            zlib1g-dev libncurses5-dev libncursesw5-dev \
+            libtinfo5 cmake libffi-dev libssl-dev
+
+      - name: Install Buildozer
+        run: |
+          pip install --upgrade pip
+          pip install buildozer cython
+
+      - name: Accept Android licenses
+        run: yes | buildozer android accept_sdk_license
+
+      - name: Build APK
+        run: buildozer android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: palacharak-apk
+          path: bin/*.apk
