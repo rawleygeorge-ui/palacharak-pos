@@ -1,0 +1,26 @@
+# =================================================
+# DELETE SHOP
+# =================================================
+
+<DeleteShopScreen>:
+    BackgroundLayout:
+        Label:
+            text: "Delete Shop"
+            font_size: 22
+            color: 1, 1, 1, 1
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+            size_hint_y: None
+            height: "44dp"
+
+        StyledButton:
+            text: "Delete Shop"
+            on_release: root.delete_shop()
+
+        StyledButton:
+            text: "Back"
+            on_release: app.root.current = "owner_menu"
+

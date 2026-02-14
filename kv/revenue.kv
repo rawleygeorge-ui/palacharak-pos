@@ -1,0 +1,85 @@
+# =================================================
+# REVENUE Screen
+# =================================================
+
+<RevenueScreen>:
+    BackgroundLayout:
+
+        Label:
+            text: "Revenue & Expenses"
+            font_size: 22
+            color: 1, 1, 1, 1
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+            size_hint_y: None
+            height: "44dp"
+
+        TextInput:
+            id: date
+            size_hint_y: None
+            height: "44dp"
+
+        WideSpinner:
+            id: particulars
+            text: "Select Particulars"
+            values:
+                [
+                "Balance carry forward from previous day",
+                "Income",
+                "Expense"
+                ]
+
+        TextInput:
+            id: desc
+            hint_text: "Description"
+            size_hint_y: None
+            height: "44dp"
+
+        TextInput:
+            id: amount
+            hint_text: "Amount"
+            input_filter: "float"
+            size_hint_y: None
+            height: "44dp"
+
+        BoxLayout:
+            size_hint_y: None
+            height: dp(60)
+            spacing: dp(20)
+            padding: dp(20), 0
+            pos_hint: {"center_x": 0.5}
+
+            Widget:
+                size_hint_x: 1
+
+            StyledButton:
+                text: "Add Record"
+                size_hint_x: None
+                width: dp(200)
+                on_release: root.add_record()
+
+            StyledButton:
+                text: "View Ledger"
+                size_hint_x: None
+                width: dp(200)
+                on_release: root.manager.current = "ledger"
+
+            # ✅ NEW BUTTON ADDED HERE
+            StyledButton:
+                text: "Daily EOD Ledger"
+                size_hint_x: None
+                width: dp(240)
+                on_release: root.manager.current = "eod_ledger"
+
+            Widget:
+                size_hint_x: 1
+
+        StyledButton:
+            text: "Back"
+            size_hint_x: None
+            width: dp(200)
+            pos_hint: {"center_x": 0.5}
+            on_release: root.manager.current = "owner_menu"

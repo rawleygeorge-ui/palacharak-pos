@@ -1,0 +1,37 @@
+<ShopQRScreen>:
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        Label:
+            text: "Show Shop QR Code"
+            font_size: 24
+            size_hint_y: None
+            height: "40dp"
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+            size_hint_y: None
+            height: "50dp"
+
+        Button:
+            text: "Generate QR"
+            size_hint_y: None
+            height: "50dp"
+            on_release:
+                root.generate_qr()
+
+        Image:
+            source: root.qr_path
+            allow_stretch: True
+
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: "50dp"
+            on_release:
+                root.go_back()

@@ -1,0 +1,74 @@
+<OwnerMenuScreen>:
+    BackgroundLayout:
+
+        Label:
+            text: "Administrator"
+            font_size: 22
+            bold: True
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: "48dp"
+            halign: "center"
+            valign: "middle"
+            text_size: self.size
+
+        StyledButton:
+            text: "Add Shop"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_add_shop()
+
+        StyledButton:
+            text: "Delete Shop"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_delete_shop()
+
+        StyledButton:
+            text: "Add User"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_add_user()
+
+        StyledButton:
+            text: "Delete User"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_delete_user()
+
+        StyledButton:
+            text: "Inventory Price Chart"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_inventory()
+
+        StyledButton:
+            text: "Revenue & Expenses"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_revenue()
+
+        # ✅ NEW BUTTON ADDED HERE
+        StyledButton:
+            text: "Show Shop QR"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.manager.current = "shop_qr"
+
+        StyledButton:
+            text: "Pay / Unlock"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_pay()
+
+        StyledButton:
+            text: "POS"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.go_pos()
+
+        StyledButton:
+            text: "Logout"
+            size_hint_x: None
+            width: self.texture_size[0] + dp(40)
+            on_release: root.logout()

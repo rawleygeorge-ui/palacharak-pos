@@ -1,0 +1,99 @@
+# =================================================
+# POS
+# =================================================
+
+<POSScreen>:
+    BackgroundLayout:
+        spacing: "12dp"
+
+        Label:
+            text: "Point of Sale"
+            font_size: 22
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: "40dp"
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+            size_hint_y: None
+            height: "44dp"
+            on_text: root.load_items(self.text)
+
+        Spinner:
+            id: item
+            text: "Select Item"
+            values: root.items
+            size_hint_y: None
+            height: "44dp"
+
+        TextInput:
+            id: qty
+            hint_text: "Quantity"
+            input_filter: "float"
+            size_hint_y: None
+            height: "44dp"
+
+        StyledButton:
+            text: "Add Item"
+            on_release: root.add_item()
+
+        # ---------------- CART HEADER ----------------
+        GridLayout:
+            cols: 3
+            size_hint_y: None
+            height: "30dp"
+            spacing: "10dp"
+
+            Label:
+                text: "Item"
+                bold: True
+
+            Label:
+                text: "Qty"
+                bold: True
+                halign: "right"
+                text_size: self.size
+
+            Label:
+                text: "Amount"
+                bold: True
+                halign: "right"
+                text_size: self.size
+
+        # ---------------- CART LIST (LEDGER STYLE) ----------------
+        ScrollView:
+            size_hint_y: None
+            height: "200dp"
+            do_scroll_x: False
+
+            GridLayout:
+                id: cart_grid
+                cols: 3
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: "36dp"
+                row_force_default: True
+                spacing: "10dp"
+
+        # ---------------- TOTAL ----------------
+        Label:
+            id: total
+            text: "0.00"
+            font_size: 20
+            bold: True
+            color: 1, 1, 1, 1
+            halign: "right"
+            text_size: self.size
+            size_hint_y: None
+            height: "40dp"
+
+        StyledButton:
+            text: "Finalize Bill"
+            on_release: root.finalize_bill()
+
+        StyledButton:
+            text: "Back"
+            on_release: root.go_back()
+

@@ -1,0 +1,29 @@
+<OwnerLoginScreen>:
+    BackgroundLayout:
+
+        Label:
+            text: "Owner Login"
+            font_size: 22
+            bold: True
+
+        TextInput:
+            id: uid
+            hint_text: "Owner User ID"
+
+        TextInput:
+            id: pwd
+            hint_text: "Password"
+            password: True
+
+        StyledButton:
+            text: "Login"
+            on_release: root.login()
+
+        StyledButton:
+            id: create_btn
+            text: "Create New Owner"
+            on_release: root.create_new_owner()
+
+        StyledButton:
+            text: "Back"
+            on_release: root.manager.current = "login_type"

@@ -1,0 +1,46 @@
+# =================================================
+# CREATE SHOP
+# =================================================
+
+<AddShopScreen>:
+    BackgroundLayout:
+        Label:
+            text: "Create Shop"
+            font_size: 22
+            color: 1, 1, 1, 1
+
+        TextInput:
+            id: shop
+            hint_text: "Shop Name"
+            on_text: root.validate()
+
+        TextInput:
+            id: owner
+            hint_text: "Owner Name"
+            on_text: root.validate()
+
+        TextInput:
+            id: dob
+            hint_text: "DOB (YYYYMMDD)"
+            input_filter: "int"
+            on_text: root.validate()
+
+        TextInput:
+            id: mobile
+            hint_text: "Mobile (Last 4 digits)"
+            input_filter: "int"
+            on_text: root.validate()
+
+        TextInput:
+            id: town
+            hint_text: "Town"
+            on_text: root.validate()
+
+        StyledButton:
+            text: "Create Shop"
+            disabled: not root.enabled
+            on_release: root.create_shop()
+
+        StyledButton:
+            text: "Back"
+            on_release: app.root.current = "owner_menu"

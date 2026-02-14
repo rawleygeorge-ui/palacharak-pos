@@ -1,0 +1,46 @@
+# =================================================
+# INVENTORY
+# =================================================
+
+<InventoryScreen>:
+    BackgroundLayout:
+        Label:
+            text: "Inventory Price Chart"
+            font_size: 22
+            color: 1, 1, 1, 1
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+
+        TextInput:
+            id: item
+            hint_text: "Item Name"
+
+        Spinner:
+            id: unit
+            text: "Unit of Measurement"
+            values: ["per Kg","per Liter","per Packet","per Bottle","per Unit","per Cup"]
+
+        TextInput:
+            id: price
+            hint_text: "Price"
+            input_filter: "float"
+
+        StyledButton:
+            text: "Add Item"
+            on_release: root.add_item()
+
+        # 🔹 NEW BUTTON
+        StyledButton:
+            text: "Update Price"
+            on_release: app.root.current = "update_price"
+
+        StyledButton:
+            text: "Inventory Price History"
+            on_release: app.root.current = "price_history"
+
+        StyledButton:
+            text: "Back"
+            on_release: app.root.current = "owner_menu"

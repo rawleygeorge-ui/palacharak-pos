@@ -1,0 +1,50 @@
+<EODLedgerScreen>:
+
+    BackgroundLayout:
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: "20dp"
+            spacing: "10dp"
+
+            Label:
+                text: "Daily EOD Ledger"
+                font_size: 22
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: "40dp"
+
+            ScrollView:
+
+                Label:
+                    text: root.report_text
+                    font_size: 16
+                    color: 1, 1, 1, 1
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+
+            BoxLayout:
+                size_hint_y: None
+                height: "60dp"
+                spacing: "20dp"
+                padding: "20dp"
+
+                Widget:
+
+                StyledButton:
+                    text: "YES"
+                    size_hint_x: None
+                    width: dp(150)
+                    on_release:
+                        root.print_report()
+
+                StyledButton:
+                    text: "NO"
+                    size_hint_x: None
+                    width: dp(150)
+                    on_release:
+                        root.close_report()
+
+                Widget:

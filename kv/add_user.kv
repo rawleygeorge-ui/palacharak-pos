@@ -1,0 +1,27 @@
+# =================================================
+# ADD USER
+# =================================================
+
+<AddUserScreen>:
+    BackgroundLayout:
+        Label:
+            text: "Add User"
+            font_size: 22
+            color: 1, 1, 1, 1
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+
+        TextInput:
+            id: username
+            hint_text: "User Name"
+
+        ActionButton:
+            text: "Add User"
+            on_release: root.add_user()
+
+        ActionButton:
+            text: "Back"
+            on_release: app.root.current = "owner_menu"

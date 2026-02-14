@@ -1,0 +1,84 @@
+#:kivy 2.3.1
+
+# =================================================
+# BASE WIDGETS
+# =================================================
+<ActionButton@Button>:
+    background_normal: ""
+    background_color: 0.55, 0.35, 0.15, 1
+    color: 1, 1, 1, 1
+    size_hint: None, None
+    width: "180dp"
+    height: "42dp"
+    pos_hint: {"center_x": 0.5}
+<BackgroundLayout@BoxLayout>:
+    orientation: "vertical"
+    padding: 25
+    spacing: 15
+    canvas.before:
+        Rectangle:
+            source: "assets/bg_wood.png"
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 0, 0, 0, 0.25
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+<StyledButton@Button>:
+    background_normal: ""
+    background_color: 0.55, 0.35, 0.15, 1
+    color: 1, 1, 1, 1
+
+    size_hint_x: None
+    width: "220dp"
+    size_hint_y: None
+    height: "44dp"
+
+    padding: 20, 10
+    width: self.texture_size[0] + self.padding[0] * 2
+
+    pos_hint: {"center_x": 0.5}
+<StyledSpinner@Spinner>:
+    size_hint_x: None
+    size_hint_y: None
+    height: "48dp"
+
+    padding: 20, 10
+    width: self.texture_size[0] + self.padding[0] * 2
+
+    pos_hint: {"center_x": 0.5}
+
+    background_normal: ""
+    background_color: 0.55, 0.35, 0.15, 1
+    color: 1, 1, 1, 1
+
+    # 🔑 THIS IS IMPORTANT
+    on_text:
+        self.width = self.texture_size[0] + self.padding[0] * 2
+
+<WideSpinner@Spinner>:
+    size_hint_x: None
+    size_hint_y: None
+    width: "520dp"
+    height: "44dp"
+    padding: 20, 10
+    pos_hint: {"center_x": 0.5}
+
+    background_normal: ""
+    background_color: 0.55, 0.35, 0.15, 1
+    color: 1, 1, 1, 1
+
+# =================================================
+# SPLASH
+# =================================================
+
+<SplashScreen>:
+    FloatLayout:
+        Image:
+            source: "assets/splash.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1

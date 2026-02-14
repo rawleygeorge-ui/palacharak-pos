@@ -1,0 +1,18 @@
+# =================================================
+# LOGIN TYPE
+# =================================================
+
+<LoginTypeScreen>:
+    BackgroundLayout:
+        Label:
+            text: "Login Type"
+            font_size: 24
+            color: 1, 1, 1, 1
+
+        StyledButton:
+            text: "Owner Login"
+            on_release: root.go_owner()
+
+        StyledButton:
+            text: "User Login"
+            on_release: root.go_user()

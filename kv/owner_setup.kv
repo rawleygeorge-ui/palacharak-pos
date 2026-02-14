@@ -1,0 +1,24 @@
+<OwnerSetupScreen>:
+    BackgroundLayout:
+
+        Label:
+            text: "Owner Setup"
+            font_size: 22
+            bold: True
+
+        TextInput:
+            id: uid
+            hint_text: "Owner User ID"
+
+        TextInput:
+            id: pwd
+            hint_text: "Password"
+            password: True
+
+        StyledButton:
+            text: "Save & Continue"
+            on_release: root.save_owner()
+
+        StyledButton:
+            text: "Back"
+            on_release: root.back()

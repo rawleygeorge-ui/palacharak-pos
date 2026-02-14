@@ -1,0 +1,39 @@
+# =================================================
+# UPDATE PRICE
+# =================================================
+
+<UpdatePriceScreen>:
+    BackgroundLayout:
+        Label:
+            text: "Update Item Price"
+            font_size: 22
+            color: 1,1,1,1
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+            on_text: root.load_items(self.text)
+
+        Spinner:
+            id: item
+            text: "Select Item"
+            values: root.items   # 🔥 THIS IS CRITICAL
+
+        TextInput:
+            id: price
+            hint_text: "New Price"
+            input_filter: "float"
+
+        TextInput:
+            id: effective_date
+            text: root.effective_date
+            readonly: True
+
+        StyledButton:
+            text: "Update Price"
+            on_release: root.update_price()
+
+        StyledButton:
+            text: "Back"
+            on_release: app.root.current = "inventory"

@@ -1,0 +1,30 @@
+# =================================================
+# DELETE USER
+# =================================================
+
+<DeleteUserScreen>:
+    BackgroundLayout:
+        Label:
+            text: "Delete User"
+            font_size: 22
+            color: 1, 1, 1, 1
+
+        Spinner:
+            id: shop
+            text: "Select Shop"
+            values: root.shops
+            on_text: root.load_users(self.text)
+
+        Spinner:
+            id: user
+            text: "Select User"
+            values: root.users
+
+        ActionButton:
+            text: "Delete User"
+            on_release: root.delete_user()
+
+        ActionButton:
+            text: "Back"
+            on_release: app.root.current = "owner_menu"
+

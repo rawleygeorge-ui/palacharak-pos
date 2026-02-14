@@ -1,0 +1,16 @@
+<QRScanScreen>:
+    BoxLayout:
+        orientation: "vertical"
+
+        ZBarCam:
+            id: zbarcam
+            on_symbols:
+                if self.symbols:
+                    root.on_qr_detected(self, self.symbols[0].data.decode("utf-8"))
+
+        Button:
+            text: "Cancel"
+            size_hint_y: None
+            height: "50dp"
+            on_release:
+                root.manager.current = "user_login"

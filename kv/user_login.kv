@@ -1,0 +1,46 @@
+<UserLoginScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        Label:
+            text: "Temporary User Login"
+            font_size: 24
+            size_hint_y: None
+            height: "40dp"
+
+        TextInput:
+            id: shop_id
+            hint_text: "Enter Shop ID or Scan QR"
+            multiline: False
+            size_hint_y: None
+            height: "50dp"
+
+        Button:
+            text: "Scan Shop QR"
+            size_hint_y: None
+            height: "50dp"
+            on_release:
+                root.open_scanner()
+
+        TextInput:
+            id: user_id
+            hint_text: "Enter Username"
+            multiline: False
+            size_hint_y: None
+            height: "50dp"
+
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: "50dp"
+            on_release:
+                root.login()
+
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: "50dp"
+            on_release:
+                root.manager.current = "login_type"

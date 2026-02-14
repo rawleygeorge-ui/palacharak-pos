@@ -1,0 +1,63 @@
+# =================================================
+# LEDGER Screen
+# =================================================
+
+<LedgerScreen>:
+    BackgroundLayout:
+        spacing: "10dp"
+
+        Label:
+            text: root.title_text
+            font_size: 20
+            bold: True
+            size_hint_y: None
+            height: "40dp"
+
+        GridLayout:
+            cols: 6
+            size_hint_y: None
+            height: "30dp"
+            spacing: "5dp"
+
+            Label:
+                text: "Sl. No"
+                bold: True
+
+            Label:
+                text: "Description"
+                bold: True
+
+            Label:
+                text: "+/-"
+                bold: True
+                size_hint_x: 0.5
+
+            Label:
+                text: "Debit"
+                bold: True
+
+            Label:
+                text: "Credit"
+                bold: True
+
+            Label:
+                text: "Closing Balance"
+                bold: True
+
+        ScrollView:
+            size_hint_y: 1
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: ledger_grid
+                cols: 6
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: "30dp"
+                row_force_default: True
+                spacing: "5dp"
+
+        StyledButton:
+            text: "Back"
+            on_release: root.manager.current = "revenue"
